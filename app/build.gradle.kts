@@ -29,7 +29,7 @@ android {
     }
 
     // Release signing comes from environment variables (GitHub Actions secrets).
-    val keystorePath = System.getenv("KEYSTORE_PATH")
+    val keystorePath = System.getenv("KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
     signingConfigs {
         if (keystorePath != null) {
             create("release") {
